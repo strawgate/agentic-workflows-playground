@@ -1,22 +1,19 @@
-// TODO: Implement user authentication
-// TODO: Add password reset functionality
-// FIXME: Memory leak in connection pool
-// TODO: Add unit tests for auth module
+// v2 - Updated API endpoints
 
 package main
 
 import "fmt"
 
 func main() {
-    fmt.Println("Hello World")
+    fmt.Println("Hello World v2")
 }
 
-// processUserData has a complex nested loop that could be simplified
+// processUserData - simplified version
 func processUserData(users []User) error {
-    for i := 0; i < len(users); i++ {
-        for j := 0; j < len(users[i].Accounts); j++ {
-            for k := 0; k < len(users[i].Accounts[j].Transactions); k++ {
-                if users[i].Accounts[j].Transactions[k].Amount > 0 {
+    for _, user := range users {
+        for _, account := range user.Accounts {
+            for _, tx := range account.Transactions {
+                if tx.Amount > 0 {
                     fmt.Println("Processing transaction")
                 }
             }
